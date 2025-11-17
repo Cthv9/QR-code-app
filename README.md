@@ -1,4 +1,8 @@
-# QR Code Generator
+# QR Code Generator PWA
 
-Questa è una semplice applicazione web in **HTML5 + JavaScript** che permette di generare QR code direttamente nel browser.  
-Non richiede backend: funziona interamente come pagina statica.
+Questa versione è una **Progressive Web App (PWA)**: puoi installarla su desktop e mobile grazie al pulsante "📲 Installa App".
+
+## 🚀 Funzionalità
+- Genera QR code direttamente nel browser.
+- Funziona offline grazie al service worker.
+- Installabile come app standalone (Android, iOS, Windows, macOS).

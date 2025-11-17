@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>QR Code Generator | By DF</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#ffffff">
   <style>
     body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
     #qrcode { margin-top: 20px; }
     input { padding: 10px; width: 300px; }
-    button { padding: 10px 20px; margin-left: 10px; }
+    button { padding: 10px 20px; margin: 10px; }
   </style>
 </head>
 <body>
@@ -18,6 +20,8 @@
   <button onclick="generateQR()">Genera QR</button>
   
   <div id="qrcode"></div>
+
+  <button id="installBtn" style="display:none;">📲 Installa App</button>
 
   <!-- Libreria QRCode.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -34,6 +38,29 @@
         width: 256,
         height: 256
       });
+    }
+
+    // PWA install prompt
+    let deferredPrompt;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+    });
+
+    installBtn.addEventListener('click', () => {
+      installBtn.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        deferredPrompt = null;
+      });
+    });
+
+    // Registrazione service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
     }
   </script>
 </body>
