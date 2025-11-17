@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator | By DF</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    #qrcode { margin-top: 20px; }
+    input { padding: 10px; width: 300px; }
+    button { padding: 10px 20px; margin-left: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Generatore di QR Code</h1>
+  <p>Inserisci un testo o un link e genera il QR code.</p>
+  
+  <input id="text" type="text" placeholder="Scrivi qui..." />
+  <button onclick="generateQR()">Genera QR</button>
+  
+  <div id="qrcode"></div>
+
+  <!-- Libreria QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    function generateQR() {
+      document.getElementById("qrcode").innerHTML = "";
+      var text = document.getElementById("text").value;
+      if (text.trim() === "") {
+        alert("Inserisci un testo!");
+        return;
+      }
+      new QRCode(document.getElementById("qrcode"), {
+        text: text,
+        width: 256,
+        height: 256
+      });
+    }
+  </script>
+</body>
+</html>
