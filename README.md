@@ -6,3 +6,7 @@ Questa versione è una **Progressive Web App (PWA)**: puoi installarla su deskto
 - Genera QR code direttamente nel browser.
 - Funziona offline grazie al service worker.
 - Installabile come app standalone (Android, iOS, Windows, macOS).
+
+## 🚀 Demo Online
+👉 Provala subito qui: (https://cthv9.github.io/QR-code-app/)
+
